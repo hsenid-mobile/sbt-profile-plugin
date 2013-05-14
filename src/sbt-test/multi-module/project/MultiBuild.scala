@@ -1,12 +1,15 @@
 import sbt._
 import Keys._
+import SbtProfilePlugin._
+import SbtProfilePlugin.SbtProfileKeys._
 
 object MultiBuild extends Build {
 
-  val baseSettings = Defaults.defaultSettings ++ Seq(
+  val baseSettings = Defaults.defaultSettings ++ profileSettings ++ Seq(
     version := "0.1",
     organization := "xyz.abc",
-    sourceDirectories in Compile += new File("src/main/profile/dev")
+    buildProfile := "dev",
+    buildProfiles := Seq("dev", "prod", "qa")
   )
 
   lazy val modules = Project(id = "modules", base = file("."),

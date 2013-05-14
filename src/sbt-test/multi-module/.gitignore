@@ -1,2 +1,5 @@
 target/*
+core/target/*
+web/target/*
 project/target/*
+project/project/target/*
