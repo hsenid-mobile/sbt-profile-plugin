@@ -20,13 +20,13 @@ object SbtProfilePlugin extends Plugin {
   lazy val profileSettings = Seq(
     buildProfile := "dev",
     buildProfiles := Seq("dev", "prod", "qa"),
-    unmanagedResources in Compile <<= (unmanagedResources in Compile, baseDirectory, buildProfile) map {
-      (cp, bd, p) => {
-        val currentProfileDir = bd / "src" / "main" / "profile" / p
-        if (currentProfileDir.exists) {
-          cp ++ currentProfileDir.listFiles
+    unmanagedResourceDirectories in Compile <<= (unmanagedResourceDirectories in Compile, baseDirectory, buildProfile) {
+      (urs, bd, p) => {
+        val resourceDir = bd / "src" / "main" / "profile" / p / "resources"
+        if (resourceDir.exists) {
+          urs ++ Seq(resourceDir)
         } else {
-          cp
+          urs
         }
       }
     }

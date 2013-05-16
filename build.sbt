@@ -1,17 +1,14 @@
-import ScriptedPlugin._
-
-seq(scriptedSettings: _*)
-
 sbtPlugin := true
 
 name := "sbt-profile-plugin"
 
 organization := "hms.sbt.plugin"
 
-version := "0.1"
+version := "0.1.1"
+
+libraryDependencies += "com.github.siasia" %% "xsbt-web-plugin" % "0.12.0-0.2.11.1" % "provided"
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials-release")
-
 
 publishTo <<= (version) { version: String =>
   val repo = "http://192.168.0.7:8080/archiva/repository/"
