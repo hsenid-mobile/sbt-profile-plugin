@@ -1,7 +1,7 @@
 import SbtProfilePlugin._
 import SbtProfileKeys._
 
-seq(baseProfileSettings :_*)
+seq(profileSettings :_*)
 
 buildProfile := "prod"
 
