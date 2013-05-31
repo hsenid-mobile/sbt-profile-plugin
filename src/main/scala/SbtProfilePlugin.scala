@@ -28,7 +28,7 @@ object SbtProfilePlugin extends Plugin {
 
     def buildShellPrompt(profile: String) = {
       (state: State) => {
-        "[\033[34m%s\033[37m@\033[34m%s\033[37m]> ".format (
+        "\033[34m%s\033[37m@\033[34m%s\033[37m> ".format (
           profile, currBranch
         )
       }
