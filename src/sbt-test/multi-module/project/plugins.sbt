@@ -1,3 +1,3 @@
-libraryDependencies += "com.github.siasia" %% "xsbt-web-plugin" % "0.12.0-0.2.11.1"
+addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.3.0")
 
-addSbtPlugin("hms.sbt.plugin" % "sbt-profile-plugin" % "0.1.3")
+addSbtPlugin("hms.sbt.plugin" % "sbt-profile-plugin" % "0.1.4")

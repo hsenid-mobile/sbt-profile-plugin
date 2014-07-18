@@ -6,6 +6,7 @@ import com.github.siasia.WebPlugin._
 import com.github.siasia.PluginKeys._
 
 object MultiBuild extends Build {
+  val tomcatVersion = "7.0.34"
 
   lazy val baseProfileSettings = Defaults.defaultSettings ++ profileSettings ++ Seq(
     buildProfile := "prod",
@@ -31,8 +32,12 @@ object MultiBuild extends Build {
     settings = baseProfileSettings ++ webSettings ++ Seq(
       name := "web",
       libraryDependencies ++= Seq(
-        "org.eclipse.jetty" % "jetty-webapp" % "7.3.0.v20110203" % "container",
-        "org.eclipse.jetty" % "jetty-plus" % "7.3.0.v20110203" % "container",
+        "org.apache.tomcat.embed" % "tomcat-embed-core" % tomcatVersion % "container",
+        "org.apache.tomcat.embed" % "tomcat-embed-logging-juli" % tomcatVersion % "container",
+        "org.apache.tomcat.embed" % "tomcat-embed-jasper" % tomcatVersion % "container",
+        "org.apache.tomcat" % "tomcat-jasper" % tomcatVersion % "container",
+        "org.apache.tomcat" % "tomcat-jasper-el" % tomcatVersion % "container",
+        "org.apache.tomcat" % "tomcat-jsp-api" % tomcatVersion % "container",
         "javax.servlet" % "servlet-api" % "2.5" % "provided"
       ),
       webappResources in Compile <<= (webappResources in Compile, baseDirectory, buildProfile) {
